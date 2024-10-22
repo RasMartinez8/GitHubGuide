@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A complete guide to mastering GitHub, including setup, commands, and working with branches.">
+    <title>GitHub Guide</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #181818; /* Dark background */
+            color: #e0e0e0; /* Light text color */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Flicker Animation */
+        @keyframes flicker {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #24292e;
+            color: #fff;
+            padding: 2em 0;
+            text-align: center;
+            border-bottom: 3px solid #36C5F0; /* Neon accent */
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            background-image: linear-gradient(45deg, #36C5F0, #FFDD44);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px #36C5F0; /* Neon glow */
+            animation: flicker 1s infinite alternate; /* Apply flicker animation */
+        }
+
+        header h2 {
+            margin-top: 10px;
+            font-size: 1.5em;
+            color: #fff;
+            font-weight: 300;
+            letter-spacing: 1.2px;
+            animation: flicker 1.5s infinite alternate; /* Apply flicker animation */
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 10px 0 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        .btn, .copy-btn {
+            background-color: #0366d6;
+            color: #fff;
+            padding: 0.5em 1.5em;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            box-shadow: 0 0 10px #36C5F0; /* Neon shadow */
+            animation: flicker 1s infinite alternate; /* Apply flicker animation */
+        }
+
+        .btn:hover, .copy-btn:hover {
+            background-color: #0051a1;
+            box-shadow: 0 0 15px #36C5F0; /* Neon glow on hover */
+        }
+
+        .btn:focus, .copy-btn:focus {
+            outline: 2px solid #0051a1;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: #282828; /* Dark section background */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+            border-radius: 10px; /* Slightly rounded corners */
+        }
+
+        h1, h2 {
+            color: #e0e0e0;
+            margin-bottom: 1em;
+        }
+
+        .code-block {
+            background-color: #2d2d2d; /* Darker background for code blocks */
+            padding: 1em;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            border-left: 5px solid #36C5F0; /* Neon accent */
+        }
+
+        .code-text {
+            font-family: monospace;
+            background-color: #2d2d2d;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            color: #36C5F0; /* Neon text color */
+        }
+
+        /* Description styling */
+        .description {
+            font-size: 0.9em;
+            color: #ccc; /* Light grey for descriptions */
+            margin-bottom: 15px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GitHub Tutorial</h1>
+        <h2>Your Complete Guide to Mastering GitHub</h2>
+        <nav>
+            <ul>
+                <li><a href="#setup" class="btn">Setup GitHub</a></li>
+                <li><a href="#commands" class="btn">GitHub Commands</a></li>
+                <li><a href="#branches" class="btn">Working with Branches</a></li>
+                <li><a href="#summary" class="btn">Summary</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="setup">
+            <h2>How to Set Up GitHub</h2>
+            <h3>1. Install Git</h3>
+            <p>Download and install Git from <a href="https://git-scm.com/" target="_blank" style="color: #36C5F0;">https://git-scm.com/</a>. Once installed, configure Git with your name and email:</p>
+            <div class="code-block">
+                <span class="code-text">git config --global user.name "Your Name"</span>
+                <button class="copy-btn" onclick="copyToClipboard('git config --global user.name \'Your Name\'')">Copy</button>
+            </div>
+            <p class="description">This command sets your name for any commits you create on your computer.</p>
+
+            <div class="code-block">
+                <span class="code-text">git config --global user.email "you@example.com"</span>
+                <button class="copy-btn" onclick="copyToClipboard('git config --global user.email \'you@example.com\'')">Copy</button>
+            </div>
+            <p class="description">This command sets your email for commits, linking them to your GitHub account.</p>
+
+            <h3>2. Create a GitHub Account</h3>
+            <p>Go to <a href="https://github.com" target="_blank" style="color: #36C5F0;">GitHub</a> and sign up for a free account if you don't already have one.</p>
+
+            <h3>3. Set Up SSH or HTTPS for Authentication</h3>
+            <p>To connect to GitHub securely, you can either use SSH keys or HTTPS. Follow the official <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank" style="color: #36C5F0;">GitHub SSH guide</a> to generate an SSH key or clone repositories using HTTPS.</p>
+        </section>
+
+        <section id="commands">
+            <h2>GitHub Commands</h2>
+            <h3>Common GitHub Commands</h3>
+
+            <div class="code-block">
+                <span class="code-text">git init</span>
+                <button class="copy-btn" onclick="copyToClipboard('git init')">Copy</button>
+            </div>
+            <p class="description">Initializes a new Git repository in your project directory.</p>
+
+            <div class="code-block">
+                <span class="code-text">git clone [URL]</span>
+                <button class="copy-btn" onclick="copyToClipboard('git clone [URL]')">Copy</button>
+            </div>
+            <p class="description">Copies an existing repository from GitHub to your local machine.</p>
+
+            <div class="code-block">
+                <span class="code-text">git add .</span>
+                <button class="copy-btn" onclick="copyToClipboard('git add .')">Copy</button>
+            </div>
+            <p class="description">Stages all the changes in your working directory for the next commit.</p>
+
+            <div class="code-block">
+                <span class="code-text">git commit -m "Commit message"</span>
+                <button class="copy-btn" onclick="copyToClipboard('git commit -m \"Commit message\"')">Copy</button>
+            </div>
+            <p class="description">Commits your staged changes to the repository with a descriptive message.</p>
+
+            <div class="code-block">
+                <span class="code-text">git push</span>
+                <button class="copy-btn" onclick="copyToClipboard('git push')">Copy</button>
+            </div>
+            <p class="description">Uploads your local commits to the remote repository on GitHub.</p>
+
+            <div class="code-block">
+                <span class="code-text">git pull</span>
+                <button class="copy-btn" onclick="copyToClipboard('git pull')">Copy</button>
+            </div>
+            <p class="description">Fetches the latest changes from the remote repository and merges them into your current branch.</p>
+
+            <div class="code-block">
+                <span class="code-text">git status</span>
+                <button class="copy-btn" onclick="copyToClipboard('git status')">Copy</button>
+            </div>
+            <p class="description">Displays the status of your working directory, showing any changes that need to be committed.</p>
+        </section>
+
+        <section id="branches">
+            <h2>Working with Branches</h2>
+            <p>Branches allow you to work on different features separately without affecting the main project.</p>
+
+            <div class="code-block">
+                <span class="code-text">git branch</span>
+                <button class="copy-btn" onclick="copyToClipboard('git branch')">Copy</button>
+            </div>
+            <p class="description">Lists all branches in your repository and highlights the current branch.</p>
+
+            <div class="code-block">
+                <span class="code-text">git branch [branch-name]</span>
+                <button class="copy-btn" onclick="copyToClipboard('git branch [branch-name]')">Copy</button>
+            </div>
+            <p class="description">Creates a new branch with the name you specify.</p>
+
+            <div class="code-block">
+                <span class="code-text">git checkout [branch-name]</span>
+                <button class="copy-btn" onclick="copyToClipboard('git checkout [branch-name]')">Copy</button>
+            </div>
+            <p class="description">Switches to the specified branch.</p>
+
+            <div class="code-block">
+                <span class="code-text">git merge [branch-name]</span>
+                <button class="copy-btn" onclick="copyToClipboard('git merge [branch-name]')">Copy</button>
+            </div>
+            <p class="description">Merges the changes from the specified branch into your current branch.</p>
+
+            <div class="code-block">
+                <span class="code-text">git branch -d [branch-name]</span>
+                <button class="copy-btn" onclick="copyToClipboard('git branch -d [branch-name]')">Copy</button>
+            </div>
+            <p class="description">Deletes the specified branch.</p>
+        </section>
+
+        <section id="summary">
+            <h2>Summary</h2>
+            <p>In this guide, you’ve learned how to set up GitHub, use essential Git commands, and work with Git branches. These are fundamental skills to manage projects effectively on GitHub. Keep practicing and experiment with more advanced features like pull requests and rebasing!</p>
+        </section>
+    </main>
+
+    <script>
+        async function copyToClipboard(text) {
+            try {
+                await navigator.clipboard.writeText(text);
+                alert('Copied: ' + text);
+            } catch (err) {
+                console.error('Could not copy text: ', err);
+            }
+        }
+    </script>
+</body>
+</html>
